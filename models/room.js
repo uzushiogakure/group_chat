@@ -4,11 +4,9 @@ module.exports = (sequelize, DataTypes) => {
   class Room extends Model {
     static associate(models) {
       Room.belongsToMany(models.User, {
-        through: models.UserRoom,
+        through: models.Chat,
       });
-      Room.belongsToMany(models.Chat, {
-        through: models.RoomChat,
-      });
+      Room.hasMany(models.Chat);
     }
   }
   Room.init(
@@ -16,6 +14,22 @@ module.exports = (sequelize, DataTypes) => {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isNull: {
+            msg: "Group Name is required",
+          },
+          notEmpty: {
+            msg: "Group Name is required",
+          },
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        defaultValue: "-",
+      },
+      imgUrl: {
+        type: DataTypes.TEXT,
+        defaultValue: "https://www.doccen.vn/icons/default-group-avatar.svg",
       },
     },
     {

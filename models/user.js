@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       User.belongsToMany(models.Room, {
-        through: models.UserRoom,
+        through: models.Chat,
       });
       User.hasMany(models.Chat);
     }
@@ -52,6 +52,11 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Password is required",
           },
         },
+      },
+      imgUrl: {
+        type: DataTypes.TEXT,
+        defaultValue:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png",
       },
     },
     {
