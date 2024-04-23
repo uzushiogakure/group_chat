@@ -1,24 +1,29 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Chat extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Chat.belongsToMany(models.Room, {
+        through: models.RoomChat,
+      });
+      Chat.belongsTo(models.User);
     }
   }
-  Chat.init({
-    content: DataTypes.TEXT,
-    UserId: DataTypes.NUMBER
-  }, {
-    sequelize,
-    modelName: 'Chat',
-  });
+  Chat.init(
+    {
+      content: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Chat",
+    }
+  );
   return Chat;
 };

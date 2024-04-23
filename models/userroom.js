@@ -1,24 +1,24 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class UserRoom extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+    static associate(models) {}
   }
-  UserRoom.init({
-    RoomId: DataTypes.NUMBER,
-    UserId: DataTypes.NUMBER
-  }, {
-    sequelize,
-    modelName: 'UserRoom',
-  });
+  UserRoom.init(
+    {
+      RoomId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "UserRoom",
+    }
+  );
   return UserRoom;
 };
