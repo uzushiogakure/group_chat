@@ -1,4 +1,4 @@
-const { Room } = require("../models");
+const { Room, Chat, User } = require("../models");
 
 class RoomController {
   static async createRoom(req, res, next) {
@@ -24,21 +24,16 @@ class RoomController {
   static async getChatRoom(req, res, next) {
     const { id } = req.params;
     try {
+      console.log(Room);
       const room = await Room.findOne({
         where: { id },
         attributes: { exclude: ["createdAt", "updatedAt"] },
         include: [
           {
             model: Chat,
-            through: {
-              attributes: { exclude: ["createdAt"] },
-            },
             include: [
               {
                 model: User,
-                through: {
-                  attributes: { exclude: ["createdAt", "updatedAt"] },
-                },
               },
             ],
           },
