@@ -25,19 +25,9 @@ class RoomController {
     const { id } = req.params;
     try {
       console.log(Room);
-      const room = await Room.findOne({
-        where: { id },
-        attributes: { exclude: ["createdAt", "updatedAt"] },
-        include: [
-          {
-            model: Chat,
-            include: [
-              {
-                model: User,
-              },
-            ],
-          },
-        ],
+      const room = await Chat.findAll({
+        where: { RoomId: id },
+        include: [User],
       });
 
       if (!room) throw { name: "NotFound" };

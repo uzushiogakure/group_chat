@@ -17,6 +17,6 @@ router.post("/register", UserController.register);
 
 router.post("/create-room", RoomController.createRoom);
 router.get("/room", RoomController.getAllRoom);
-router.get("/chat-room/:id", RoomController.getChatRoom);
+router.get("/room/:id", RoomController.getChatRoom);
 
 module.exports = router;
