@@ -6,7 +6,7 @@ const UserController = require("../controllers/userController");
 const RoomController = require("../controllers/roomController");
 
 router.get("/", (req, res) => {
-  res.json("Hello World!");
+  res.json("Hello Girls!");
 });
 
 router.post("/login", UserController.login);
