@@ -9,6 +9,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        title: "Niatnya Baik",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: "Dark System",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
