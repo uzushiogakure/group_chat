@@ -27,7 +27,11 @@ class UserController {
       // console.log(access_token);
       res
         .status(200)
-        .json({ message: "successfully login", access_token: access_token });
+        .json({
+          message: "successfully login",
+          access_token: access_token,
+          data: checkEmail,
+        });
     } catch (error) {
       next(error);
     }
