@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      RoomChat.hasMany(models.User)
+      RoomChat.hasMany(models.Room)
     }
   }
   RoomChat.init({
