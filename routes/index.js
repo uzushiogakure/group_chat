@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { authentication } = require("../middleware/authentication");
+const { authentication } = require("../middlewares/authentication");
 const UserController = require("../controllers/userController");
 const RoomController = require("../controllers/roomController");
 
@@ -13,7 +13,7 @@ router.post("/login", UserController.login);
 router.post("/register", UserController.register);
 
 // Need authentication
-router.use(authentication);
+// router.use(authentication);
 
 router.post("/create-room", RoomController.createRoom);
 router.get("/room", RoomController.getAllRoom);

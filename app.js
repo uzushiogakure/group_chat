@@ -8,7 +8,7 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const router = require("./routes");
-const errorHandler = require("./middleware/errorHandler");
+const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true }));
