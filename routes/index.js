@@ -13,7 +13,6 @@ router.post("/login", UserController.login);
 router.post("/register", UserController.register);
 
 // Need authentication
-// router.use(authentication);
 
 router.post("/create-room", RoomController.createRoom);
 router.get("/room", RoomController.getAllRoom);

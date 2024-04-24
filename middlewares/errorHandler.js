@@ -8,10 +8,10 @@ const errorHandler = (err, req, res, next) => {
       res.status(400).json({ message: err.errors[0].message });
       break;
     case "EmailRequired":
-      res.status(400).json({ message: "Email validation errors" });
+      res.status(400).json({ message: "Please enter your email" });
       break;
     case "PasswordRequired":
-      res.status(400).json({ message: "Password validation errors" });
+      res.status(400).json({ message: "Please enter your password" });
       break;
     case "InvalidLogin":
       res.status(401).json({ message: "Invalid Email/Password" });
