@@ -24,7 +24,6 @@ class RoomController {
   static async getChatRoom(req, res, next) {
     const { id } = req.params;
     try {
-      console.log(Room);
       const room = await Chat.findAll({
         where: { RoomId: id },
         include: [User],
