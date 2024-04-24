@@ -19,7 +19,7 @@ app.use(require("morgan")("dev"));
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
   },
 });
 
@@ -33,8 +33,11 @@ io.on("connection", (socket) => {
   });
 
   socket.on("message:new", async (body) => {
+    console.log("2");
     try {
       await Chat.create(body);
+      io.emit("message:update", "updated");
+      console.log("3");
     } catch (error) {
       throw error;
     }
