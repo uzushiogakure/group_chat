@@ -20,6 +20,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: "https://phase2-group.web.app",
+    // origin: "http://localhost:5173",
   },
 });
 
