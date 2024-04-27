@@ -6,11 +6,13 @@ class UserController {
   static async register(req, res, next) {
     try {
       const { name, email, password } = req.body;
-      await User.create({ name, email, password: hashPassword(password) });
+    //   console.log(req.body);
+      const data = await User.create({ name, email, password: hashPassword(password) });
+    //   console.log(data);
       res.status(201).json({ message: "User has successfully created" });
     } catch (error) {
+        console.log(error);
       next(error);
-      console.log(error);
     }
   }
   static async login(req, res, next) {
